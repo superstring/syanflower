@@ -1,0 +1,63 @@
+{
+  "name": "syanflower",
+  "version": "0.1.3",
+  "description": "powerful ajax tool that support native cache request",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/superstring/syanflower"
+  },
+  "keywords": [
+    "ajax",
+    "cached"
+  ],
+  "author": "K.Arthur",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "localforage": "^1.7.3",
+    "promise-polyfill": "^8.1.0",
+    "url-search-params-polyfill": "^5.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "delete": "^1.1.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-html": "^5.0.5",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.2",
+    "rollup": "^1.9.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-node-resolve": "^4.2.2"
+  },
+  "buildConfig": {
+    "input": "src/index.js",
+    "output": "dist/",
+    "middle": "dist/syanflower.tmp",
+    "format": [
+      "iife",
+      "cmd",
+      "cjs"
+    ],
+    "name": "SF",
+    "sourcemap": false
+  },
+  "files": [
+    "dist",
+    "src",
+    ".gitignore",
+    "babel.config.js",
+    "gulpfile.js",
+    "package.json",
+    "package-lock.json",
+    "README.md",
+    "rollup.config.js"
+  ]
+}

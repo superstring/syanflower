@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Syanflower Example</title>
+  </head>
+  <body>
+    <h2>Open your debug panel(F12) and see the result.</h2>
+
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="../dist/syanflower.js"></script>
+    <script>
+      // config test
+      SF.DB.config({
+        name: 'app',
+        storeName: 'store',
+        description: 'test database'
+      });
+      SF.use({ expire: 30 * 1000 });
+
+      // general request test
+      var getProxy = SF.createGetXHR('./');
+      var getRequest = getProxy('data.json');
+      getRequest({ key: 10 }).then(function(response) {
+        console.log(response.data);
+      });
+
+      // cache request test
+      var getCacheRequest = SF.createCacheXHR('data', getRequest);
+      getCacheRequest({ key: 10 }).then(function(response) {
+        console.log(response.data);
+      });
+
+      // request factory test
+      var specialCreateGetXHR = SF.createGetXHRFactory({
+        transformRequest: [SF.transformPipe(SF.transformToUSP)]
+      });
+      var getCacheRequestSpecial = SF.createCacheXHR(
+        'data',
+        specialCreateGetXHR('./')('data.json')
+      );
+      getCacheRequestSpecial({ key: 10 }).then(function(response) {
+        console.log(response.data);
+      });
+
+      // mock data test
+      var getMockRequest = SF.createCacheXHR(
+        'mock-data',
+        SF.createMockAPI([1, 2, 3, 4], 1000, 10, true)
+      );
+      getMockRequest({ key: 10 })
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>

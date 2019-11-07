@@ -1,0 +1,70 @@
+// https://eslint.org/docs/rules/
+// https://eslint.bootcss.com/docs/rules/
+{
+    "root": true,
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "plugins": [
+        "html"
+    ],
+    "extends": "eslint:recommended",
+    "globals": {
+        "axios": true,
+        "localforage": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+        // Possible Errors
+        "no-console": "warn",                      // 禁用 console
+        "no-empty": "warn",                        // 禁止出现空语句块
+
+        // Best Practice
+        "curly": "error",                          // 强制所有控制语句使用一致的括号风格
+        "eqeqeq": "error",                         // 要求使用 === 和 !==
+        "no-else-return": "warn",                  // 禁止 if 语句中 return 语句之后有 else 块
+        "no-eval": "error",                        // 禁用 eval()
+        "no-implicit-coercion": "warn",            // 警告使用短符号进行类型转换
+        "no-unmodified-loop-condition": "warn",    // 警告一成不变的循环条件
+        "no-useless-return": "error",              // 禁止多余的 return 语句
+        "no-with": "error",                        // 禁用 with 语句
+
+        // Variables
+        "init-declarations": ["error", "always"],  // 要求(或禁止) var 声明中的初始化
+        "no-undef": "warn",                        // 禁用未声明的变量，除非它们在 /*global */ 注释中被提到
+        "no-unused-vars": "warn",                  // 禁止出现未使用过的变量
+        "no-use-before-define": "warn",            // 禁止在变量定义之前使用它们
+
+        // Stylistic Issues
+        "quotes": ["error", "single"],             // 使用'号
+        "brace-style": "error",                    // 强制在代码块中使用一致的大括号风格: one true brace style
+        "camelcase": "error",                      // 强制使用骆驼拼写法命名约定
+        // "id-blacklist": ["error", "id", "data"],   // 禁用指定的标识符
+        "id-length": ["error", {
+            "min": 2
+        }],                                        // 强制标识符的最小和最大长度: [2, undefined]
+        "indent": ["error", 2],                    // 强制使用一致的缩进: 2
+        "max-depth": ["error", 3],                 // 强制可嵌套的块的最大深度: 3
+        "max-len": ["error", { "code": 100 }],     // 强制一行的最大长度: 100
+        "max-lines": ["error", 400],               // 强制最大行数: 400
+        "max-statements-per-line": ["error", {
+            "max": 1
+        }],                                        // 强制每一行中所允许的最大语句数量: 1
+        "max-statements": ["error", 100],          // 强制函数块最多允许的的语句数量: 100
+        "space-infix-ops": "error",                // 要求操作符周围有空格
+        "semi": ["error", "always"],               // 要求使用分号
+
+        // ECMAScript New
+        "no-var": "error",                         // 要求使用 let 或 const 而不是 var
+        "object-shorthand": ["error", "always"],   // 要求或禁止对象字面量中方法和属性使用简写语法
+        "prefer-arrow-callback": "error",          // 要求回调函数使用箭头函数
+        "prefer-const": "error",                   // 要求使用 const 声明那些声明后不再被修改的变量
+        "prefer-spread": "warn",                   // 要求使用扩展运算符而非 .apply()
+        "prefer-template": "warn"                  // 要求使用模板字面量而非字符串连接
+    }
+}
